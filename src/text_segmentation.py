@@ -5,7 +5,7 @@ import jieba
 def text_seg():
     '''
         Use segmentation module to cut the word.
-        You can find user dict in '../tmp/userdict.txt'
+        You can find user dict in '../tmp/userdict.txt'.
         File_in: '../tmp/book-utf-8.txt'
         File_out: '../tmp/book-seg.txt'
     '''
