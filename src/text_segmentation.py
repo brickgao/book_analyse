@@ -4,7 +4,7 @@ import jieba
 
 def text_seg(file_in_path='../tmp/book-utf-8.txt',
              file_out_path='../tmp/book-seg.txt',
-             user_dict_path='../tmp/user_dict_path.txt')
+             user_dict_path='../tmp/userdict.txt'):
     '''
         Use segmentation module to cut the word.
         You can find default user dict in '../tmp/userdict.txt'.

@@ -40,12 +40,18 @@ def cosine_all():
     '''
         Use model to cosine all name in the book.
     '''
-    _name_list = name_list
-    map(lambda _: _.encode('utf-8'), _name_list)
+    _name_list = name_list[:]
+    _name_list = map(lambda _: _.encode('utf-8'), _name_list)
     model = word2vec.load('../tmp/book.bin')
-    return model.cosine(_name_list, n=10)
+    _ret = {}
+    for _ in _name_list:
+        try:
+            _ret.update(model.cosine(_, n=10))
+        except:
+            print _ + ' not found'
+    return _ret
 
-def get_relation(_dict):
+def get_relationship(_dict):
     '''
         Get a realtionship among people.
     '''
@@ -54,8 +60,8 @@ def get_relation(_dict):
         _ret_d[_name] = []
     for _name in _dict.keys():
         for _e in _dict[_name]:
-            if _e[0] in name_list:
-                _ret_d[_name].append(_e[0])
+            if _e[0].decode('utf-8') in name_list:
+                _ret_d[_name.decode('utf-8')].append(_e[0].decode('utf-8'))
     return _ret_d
 
 
